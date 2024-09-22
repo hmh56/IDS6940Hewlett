@@ -1,0 +1,28 @@
+```{r}
+#https://data.cdc.gov/NCHS/Provisional-COVID-19-death-counts-and-rates-by-mon/yrur-wghw/about_data
+#This file contains COVID-19 death counts and rates by month and year of death, jurisdiction of residence (U.S., HHS Region) and demographic characteristics (sex, age, race and Hispanic origin, and age/race and Hispanic origin). United States death counts and rates include the 50 states, plus the District of Columbia.
+library(readr)
+Provisional_COVID_19_death_counts_and_rates_by_month_jurisdiction_of_residence_and_demographic_characteristics_20240921 <- read_csv("C:/Users/hamil/OneDrive/Desktop/UWF/Fall 2024/IDC 6940 Capstone/IDS6940Hewlett/IDS6940Hewlett/DataSets/Provisional_COVID-19_death_counts_and_rates_by_month__jurisdiction_of_residence__and_demographic_characteristics_20240921.csv")
+
+dataset1 <- Provisional_COVID_19_death_counts_and_rates_by_month_jurisdiction_of_residence_and_demographic_characteristics_20240921
+head(dataset1,5)
+summary(dataset1)
+
+# This data set already might be "quantiled" I don't know how to say it but not a great candidate since clearly it seems to have been already broken into groups. There would be some data cleaning that would need to happen. It seems that the group and subgroup categories are pretty messy with all sorts of different categorical values. 
+```
+
+```{r}
+#The U.S. Department of Health and Human Services (HHS) via the Health Resources and Services Administration (HRSA) is releasing American Rescue Plan payments to providers and suppliers who have served rural Medicaid, Children's Health Insurance Program (CHIP), and Medicare beneficiaries from January 1, 2019 through September 30, 2020. The dataset will be updated as additional payments are released. Data does not reflect recipients’ attestation status, returned payments, or unclaimed funds.
+# https://data.cdc.gov/Administrative/American-Rescue-Plan-ARP-Rural-Payments/8v6a-z6zq/about_data
+
+#This one might be a better candidate. I can see the zipcodes being broken into quantiles based on the funding. IDK what we could research but potential? Maybe have a hypothesis that the more population desnity your zipcode is the more funding you get? See if it holds trues. Analyze by quantile.
+library(readr)
+American_Rescue_Plan_ARP_Rural_Payments_20240921 <- read_csv("C:/Users/hamil/OneDrive/Desktop/UWF/Fall 2024/IDC 6940 Capstone/IDS6940Hewlett/IDS6940Hewlett/DataSets/American_Rescue_Plan__ARP__Rural_Payments_20240921.csv")
+
+dataset2 <- American_Rescue_Plan_ARP_Rural_Payments_20240921
+head(dataset2,5)
+
+#Would have to do some wrangling on this one. The data is being viewed as characters. I would have to change the dollar signs or break the data into multiple cells to sepereate the numeric values from the dollar sign. 
+
+summary(dataset2)
+```
