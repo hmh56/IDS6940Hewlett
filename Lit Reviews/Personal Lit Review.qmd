@@ -1,0 +1,144 @@
+---
+title: "Week 3 Checkin"
+author: "Hamilton Hewlett"
+format: html
+editor: visual
+---
+
+##  
+
+Article 1 URL: [HERE](https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_proquest_miscellaneous_38368363&context=PC&vid=01FALSC_UWF:UWF&lang=en&search_scope=MyInst_and_CI&adaptor=Primo%20Central&tab=Everything&query=any,contains,quantile%20regression&offset=10&pcAvailability=true)
+
+·         Quantile regression was introduced in 1978 by Koenker and Bassett.
+
+·         It is good to show these different quantile regressions rather than relying on the mean or median of each quartile to show anything.
+
+·         The symmetry of absolute value yields the median. Applying differing weights to each quantiles gives their symmetry.
+
+·         What the regression curve does is give a summary for the averages in a data set. We can go further and compute several averages.
+
+·         In classic linear regression. Means for groups are ignored and a line is created for the entire regression. In Quantile regression, we can group together like means and create regression lines for each group. Then each similar group can be studied further.
+
+·         Seems like we will go off the median to start looking at these groups, not necessarily the mean.
+
+·         R can be used in quantile regression
+
+Article 2 URL: [HERE](https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_annualreviews_primary_10_1146_annurev_economics_063016_103651&context=PC&vid=01FALSC_UWF:UWF&lang=en&search_scope=MyInst_and_CI&adaptor=Primo%20Central&tab=Everything&query=any,contains,quantile%20regression&offset=0&pcAvailability=true)
+
+·         We can’t rely anymore on Gaussian methods to tell us the truth of a data set by relying on the overall mean.
+
+·         The amount of different quantile regressions that can be performed has expanded since the first inception. Now, we have options depending on what we are researching. This was a great article to see all the different “types” of quantile regression we can use.
+
+·         I was interested in the Time Series Models. We can now see asymmetries and different tail behavior.  
+
+·         Breaking this down into sections.
+
+o   Binary Treatment Effects (QY \|D(τ \|D) = α(τ ) + β(τ )D)
+
+§  This is the simplest quantile regression.
+
+§  This recognizes that the distribution of response can be arbitrarily different under the treatment and control regimes. As long as treatment for qunaitle is randomly assigned, estimation of QTE is easily implemented.
+
+o   Multiple Treatments, Concomitant Covariates, and Interactions
+
+§  This section focused on the fact that interactions can have a significant effect on quantiles. He goes into the fact that more research needs to be done to account for these things.
+
+o   Method of Quantiles
+
+§  Quantile regression provides a foundation for nonparametric structural models
+
+o   Nonlinear Quantile Regression
+
+§  Discusses different options for approaching this. Goes into detail on something that hasn’t really been explored yet. That is to rescale the response by dividing its geometric mean and then estimate λ.
+
+o   Nonparametric Quantile Regression
+
+§  A crucial part of the computational strategy underlying this method is the sparse linear algebra employed to represent high-dimensional design matrices and to solve systems of linear equations required at each iteration of the interior point algorithms used for fitting.
+
+§  The lasso controls the effective number of active linear covariate effects.
+
+o   Time Series Models
+
+§  The reason that quantile is used here is because at one time Gaussian theories were used heavily in this space. However, you lost information about the tail when using this method as well as asymmetries.
+
+o   Conclusion
+
+§  It has long been an assumption that all things empirical have been revealed by their conditional means.
+
+§  As data becomes more complex and heterogeneity is taken more seriously, quantile methods have become favorable.
+
+Article 3 URL: [HERE](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4054530/)
+
+·         I learned from this article that quantile regression is great for researching data with health or economic information. This is great because my group I think is going to focus on health information.
+
+·         Normal methods such as ordinary least squares and logistic regression are done assuming that the coefficients remain constant throughout the populations. There are times when researchers are more interested in group differences across a given distribution of a dependent variable rather than just looking at the mean.
+
+·         They gave the example of looking at alcohol taxes on different groups of drinkers. Breaking the population into groups they could better analyze the drinkers.
+
+·         Certain variables such as race, ethnicity, gender, just like categorical variables are great for quantile. This is because you can view the categories with their assigned value.
+
+·         Quantile regression is “not a regression estimated on a quantile”
+
+o   They simply allow the analyst to relax the common regression assumption.
+
+o   In OLS, the goal is to minimize the distances between predicted and actual values.
+
+o   In Quantile, it is differentially weighted the distances between the values by the regression line and observed values then tries to minimize the weighted distance.
+
+·         Quantile regression allows us to “relax” the regression slope. I understand what the author is saying. We don’t need a one all be all intense rigid regression line. We can have multiple. However, it isn’t a regression estimated on a quantile.
+
+·         We can understand the data better by understanding variables outside and away from the mean.
+
+o   The neat thing is that we can understand the data that are not normally distributed and don’t have linear relationships with predictor variables.
+
+o   It really amplifies the ability to detect differences between the upper and lower parts of the sample population
+
+·         One thing that is bad, is that when you are running quantile, you are cutting your population down each time you observe a quantile.
+
+Article 4: Click [HERE](https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_proquest_miscellaneous_1548635552&context=PC&vid=01FALSC_UWF:UWF&lang=en&search_scope=CentralIndex&adaptor=Primo%20Central&tab=CentralIndex&query=any,contains,quantile%20regression&offset=30) for citation. Click [HERE](https://watermark.silverchair.com/kwu178.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAA04wggNKBgkqhkiG9w0BBwagggM7MIIDNwIBADCCAzAGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMC6Rbe2RJn858P_VOAgEQgIIDAb8iBr1o_JKw-P_gZbfn6L7rUhihGKyKjvbSRUEhjEch1A_RirdOmYOCSJCxMTJDi0FLNFa5LYkFl5is9k9pqwnxzoN__ZT0YUxURlTbKt9PgS1Ii1dcdhWwwOGctIDFLkYGKM3YjPMkz-382EuuSvdJhfEkovaY5g79Hrv_Duzx6-qEkPRGQB4s2rgP9iLnoVM_nY-8ZVqq3IyvLVHBtHEh7B7zxmIzmkm2jReSxjeMHoy5er0D0HnrjacMHm0LOrbi2kFoSkqMBAlt8nX902jpxl9h_3HVTsfkX_0_Uza4V7YWG1hGpsrAluHF-732lSSPZgvqBx_90Se1BM5JcqnyS6ABPcHqwqOODVhg22oEp4jv49ijxrWCgKU289-SleE-nKvQDGNJNUj6WuyV_bc8i56ESTWjvBtm2pEEa9tV9DSTIAsZ-MTQhoHJWyTyIyo0GQTfPGArKZujtcwpNtRmpt8-0QLTLR9e_vfgeUakbYac3WM5-9QwC7NsXPMQdywzZAJnn8Xp2Uclb3bEX6a7uafknG1jOfMMBEkAN699DY7CNOC2sYzZFn5y_Y0LfGRyuvgIOeeHnMW0coJy4Lz5WzySMvzW1-QnNaiiLl12qb-Whx5cINjFAZ2EGd38SGO2A6-5aG-r3dfqzqV9oRX4n8x-Qsf31-cS1LqKHzqwtteWAKCOLpmK_BdsjbyKUFgI6FJTKQzMeLV2YWC5sqYmv2gHjbFYH8pxAOs4v1KFGkwmwc9TE97X-dzRNCblNX0Hf6BaZfHv97py7AuxwYTrFnX9XeSn7YcqGMx73qDELN21d5haTJr44qtz9mDkMSL-mpdWjdbF0uCmuGCchBHZmhVCi3C4psVj7N8rjoVlvUq7BAINgkeUynNh585aXXXo2MyWSF8Xf5D9UjkeOKYcGgtM2n2E0bclO3k-fEbFi6acywYlPtCZQsvG3UPL5G-v0IaRmO0iWkATF0w9Ey_y9K8qCuCEV7iAXUbpnQrR--hJ94FfOwQTIyZ1huoZBOE) for article.
+
+·         Quantile Regression is a statistical technique used to model quantiles within a regression framework.
+
+·         Quantile really helps model data sets that have skews in them.
+
+·         One reason that quantile wasn’t used often is because in studies there was already some sort of age cut off. Like the scope of who was being observed in the sample was already in a sense portioned out.
+
+·         A quantile regression coefficient shows how much a specific quantile of the outcome distribution is shifted by a 1 unit increase in the predictor variable.
+
+·         Quantile regressions may not form together to create a clear picture like that linear regression. It may be confusing to view x number of differing equations and visualize that.
+
+·         Quantile seems like it would be used very often in medical studies
+
+·         It can be based off sample specific quantiles.
+
+·         You can look at and set quantiles based on the rest of the sample. So if you wanted to look at the threshold of X, you can do so with quantile.
+
+·         Quantile isn’t ideal to simply interpret. It is more complicated than the others, so that is why sometimes people don’t use it.
+
+·         It offers more information to the end user and is less sensitive to outliers than that of linear.
+
+Article 5: Click [HERE](https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_unpaywall_primary_10_1080_07350015_2021_2013245&context=PC&vid=01FALSC_UWF:UWF&lang=en&search_scope=CentralIndex&adaptor=Primo%20Central&tab=CentralIndex&query=any,contains,quantile%20regression%20explained&offset=10) for citation. Click [HERE](https://www.tandfonline.com/doi/pdf/10.1080/07350015.2021.2013245) for article.
+
+·         This article’s aim is to prevent crossing quantiles. When you have a quantile regression formula, it will often eventually cross into the next quantile when extrapolated. That really does make sense. You cannot assume that the quantile you are analyzing will have a regression equation that traps and keeps estimated values in that quantile infinitely.
+
+·         The “curse of dimensionality” is the growing number of dimensions in a data set curses the data set into becoming exponentially more complex.
+
+·         Great alternative to the least square regression.
+
+·         Quantile functions cannot cross each other. However, the estimated regression curves can.
+
+·         This article helped show methods of not crossing.
+
+o   It developed methods to prevent the crossing of the estimated quantile curves.
+
+o   Studied the CQR method.
+
+Article 6: Click [HERE](https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_jstor_primary_24739489&context=PC&vid=01FALSC_UWF:UWF&lang=en&search_scope=CentralIndex&adaptor=Primo%20Central&tab=CentralIndex&query=any,contains,quantile%20regression%20explained&offset=40) for citation. Click [HERE](https://www-jstor-org.ezproxy.lib.uwf.edu/stable/pdf/24739489) for article.
+
+·         This article tackles what to do with missing data and quantile regression.
+
+·         Being able to incorporate and include the outliers in the regressions allows for quantiles to be more resistant overall to outliers affecting the entire model itself.
+
+·         Inverse probability weighting methods are gained popularity in the 90s to help with missing data.
+
+·         I feel like though in my project I am just going to naomit.

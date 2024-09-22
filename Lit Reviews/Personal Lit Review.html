@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Hamilton Hewlett">
+
+<title>Week 3 Checkin</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Personal Lit Review_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Personal Lit Review_files/libs/quarto-html/quarto.js"></script>
+<script src="Personal Lit Review_files/libs/quarto-html/popper.min.js"></script>
+<script src="Personal Lit Review_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Personal Lit Review_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Personal Lit Review_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Personal Lit Review_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Personal Lit Review_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Personal Lit Review_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Personal Lit Review_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 3 Checkin</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Hamilton Hewlett </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Article 1 URL: <a href="https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_proquest_miscellaneous_38368363&amp;context=PC&amp;vid=01FALSC_UWF:UWF&amp;lang=en&amp;search_scope=MyInst_and_CI&amp;adaptor=Primo%20Central&amp;tab=Everything&amp;query=any,contains,quantile%20regression&amp;offset=10&amp;pcAvailability=true">HERE</a></p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile regression was introduced in 1978 by Koenker and Bassett.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is good to show these different quantile regressions rather than relying on the mean or median of each quartile to show anything.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The symmetry of absolute value yields the median. Applying differing weights to each quantiles gives their symmetry.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; What the regression curve does is give a summary for the averages in a data set. We can go further and compute several averages.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In classic linear regression. Means for groups are ignored and a line is created for the entire regression. In Quantile regression, we can group together like means and create regression lines for each group. Then each similar group can be studied further.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seems like we will go off the median to start looking at these groups, not necessarily the mean.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R can be used in quantile regression</p>
+<p>Article 2 URL: <a href="https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_annualreviews_primary_10_1146_annurev_economics_063016_103651&amp;context=PC&amp;vid=01FALSC_UWF:UWF&amp;lang=en&amp;search_scope=MyInst_and_CI&amp;adaptor=Primo%20Central&amp;tab=Everything&amp;query=any,contains,quantile%20regression&amp;offset=0&amp;pcAvailability=true">HERE</a></p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We can’t rely anymore on Gaussian methods to tell us the truth of a data set by relying on the overall mean.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The amount of different quantile regressions that can be performed has expanded since the first inception. Now, we have options depending on what we are researching. This was a great article to see all the different “types” of quantile regression we can use.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I was interested in the Time Series Models. We can now see asymmetries and different tail behavior. &nbsp;</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Breaking this down into sections.</p>
+<p>o&nbsp;&nbsp; Binary Treatment Effects (QY |D(τ |D) = α(τ ) + β(τ )D)</p>
+<p>§&nbsp; This is the simplest quantile regression.</p>
+<p>§&nbsp; This recognizes that the distribution of response can be arbitrarily different under the treatment and control regimes. As long as treatment for qunaitle is randomly assigned, estimation of QTE is easily implemented.</p>
+<p>o&nbsp;&nbsp; Multiple Treatments, Concomitant Covariates, and Interactions</p>
+<p>§&nbsp; This section focused on the fact that interactions can have a significant effect on quantiles. He goes into the fact that more research needs to be done to account for these things.</p>
+<p>o&nbsp;&nbsp; Method of Quantiles</p>
+<p>§&nbsp; Quantile regression provides a foundation for nonparametric structural models</p>
+<p>o&nbsp;&nbsp; Nonlinear Quantile Regression</p>
+<p>§&nbsp; Discusses different options for approaching this. Goes into detail on something that hasn’t really been explored yet. That is to rescale the response by dividing its geometric mean and then estimate λ.</p>
+<p>o&nbsp;&nbsp; Nonparametric Quantile Regression</p>
+<p>§&nbsp; A crucial part of the computational strategy underlying this method is the sparse linear algebra employed to represent high-dimensional design matrices and to solve systems of linear equations required at each iteration of the interior point algorithms used for fitting.</p>
+<p>§&nbsp; The lasso controls the effective number of active linear covariate effects.</p>
+<p>o&nbsp;&nbsp; Time Series Models</p>
+<p>§&nbsp; The reason that quantile is used here is because at one time Gaussian theories were used heavily in this space. However, you lost information about the tail when using this method as well as asymmetries.</p>
+<p>o&nbsp;&nbsp; Conclusion</p>
+<p>§&nbsp; It has long been an assumption that all things empirical have been revealed by their conditional means.</p>
+<p>§&nbsp; As data becomes more complex and heterogeneity is taken more seriously, quantile methods have become favorable.</p>
+<p>Article 3 URL: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4054530/">HERE</a></p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I learned from this article that quantile regression is great for researching data with health or economic information. This is great because my group I think is going to focus on health information.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Normal methods such as ordinary least squares and logistic regression are done assuming that the coefficients remain constant throughout the populations. There are times when researchers are more interested in group differences across a given distribution of a dependent variable rather than just looking at the mean.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; They gave the example of looking at alcohol taxes on different groups of drinkers. Breaking the population into groups they could better analyze the drinkers.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Certain variables such as race, ethnicity, gender, just like categorical variables are great for quantile. This is because you can view the categories with their assigned value.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile regression is “not a regression estimated on a quantile”</p>
+<p>o&nbsp;&nbsp; They simply allow the analyst to relax the common regression assumption.</p>
+<p>o&nbsp;&nbsp; In OLS, the goal is to minimize the distances between predicted and actual values.</p>
+<p>o&nbsp;&nbsp; In Quantile, it is differentially weighted the distances between the values by the regression line and observed values then tries to minimize the weighted distance.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile regression allows us to “relax” the regression slope. I understand what the author is saying. We don’t need a one all be all intense rigid regression line. We can have multiple. However, it isn’t a regression estimated on a quantile.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We can understand the data better by understanding variables outside and away from the mean.</p>
+<p>o&nbsp;&nbsp; The neat thing is that we can understand the data that are not normally distributed and don’t have linear relationships with predictor variables.</p>
+<p>o&nbsp;&nbsp; It really amplifies the ability to detect differences between the upper and lower parts of the sample population</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; One thing that is bad, is that when you are running quantile, you are cutting your population down each time you observe a quantile.</p>
+<p>Article 4: Click <a href="https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_proquest_miscellaneous_1548635552&amp;context=PC&amp;vid=01FALSC_UWF:UWF&amp;lang=en&amp;search_scope=CentralIndex&amp;adaptor=Primo%20Central&amp;tab=CentralIndex&amp;query=any,contains,quantile%20regression&amp;offset=30">HERE</a> for citation. Click <a href="https://watermark.silverchair.com/kwu178.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAA04wggNKBgkqhkiG9w0BBwagggM7MIIDNwIBADCCAzAGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMC6Rbe2RJn858P_VOAgEQgIIDAb8iBr1o_JKw-P_gZbfn6L7rUhihGKyKjvbSRUEhjEch1A_RirdOmYOCSJCxMTJDi0FLNFa5LYkFl5is9k9pqwnxzoN__ZT0YUxURlTbKt9PgS1Ii1dcdhWwwOGctIDFLkYGKM3YjPMkz-382EuuSvdJhfEkovaY5g79Hrv_Duzx6-qEkPRGQB4s2rgP9iLnoVM_nY-8ZVqq3IyvLVHBtHEh7B7zxmIzmkm2jReSxjeMHoy5er0D0HnrjacMHm0LOrbi2kFoSkqMBAlt8nX902jpxl9h_3HVTsfkX_0_Uza4V7YWG1hGpsrAluHF-732lSSPZgvqBx_90Se1BM5JcqnyS6ABPcHqwqOODVhg22oEp4jv49ijxrWCgKU289-SleE-nKvQDGNJNUj6WuyV_bc8i56ESTWjvBtm2pEEa9tV9DSTIAsZ-MTQhoHJWyTyIyo0GQTfPGArKZujtcwpNtRmpt8-0QLTLR9e_vfgeUakbYac3WM5-9QwC7NsXPMQdywzZAJnn8Xp2Uclb3bEX6a7uafknG1jOfMMBEkAN699DY7CNOC2sYzZFn5y_Y0LfGRyuvgIOeeHnMW0coJy4Lz5WzySMvzW1-QnNaiiLl12qb-Whx5cINjFAZ2EGd38SGO2A6-5aG-r3dfqzqV9oRX4n8x-Qsf31-cS1LqKHzqwtteWAKCOLpmK_BdsjbyKUFgI6FJTKQzMeLV2YWC5sqYmv2gHjbFYH8pxAOs4v1KFGkwmwc9TE97X-dzRNCblNX0Hf6BaZfHv97py7AuxwYTrFnX9XeSn7YcqGMx73qDELN21d5haTJr44qtz9mDkMSL-mpdWjdbF0uCmuGCchBHZmhVCi3C4psVj7N8rjoVlvUq7BAINgkeUynNh585aXXXo2MyWSF8Xf5D9UjkeOKYcGgtM2n2E0bclO3k-fEbFi6acywYlPtCZQsvG3UPL5G-v0IaRmO0iWkATF0w9Ey_y9K8qCuCEV7iAXUbpnQrR--hJ94FfOwQTIyZ1huoZBOE">HERE</a> for article.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile Regression is a statistical technique used to model quantiles within a regression framework.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile really helps model data sets that have skews in them.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; One reason that quantile wasn’t used often is because in studies there was already some sort of age cut off. Like the scope of who was being observed in the sample was already in a sense portioned out.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A quantile regression coefficient shows how much a specific quantile of the outcome distribution is shifted by a 1 unit increase in the predictor variable.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile regressions may not form together to create a clear picture like that linear regression. It may be confusing to view x number of differing equations and visualize that.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile seems like it would be used very often in medical studies</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It can be based off sample specific quantiles.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You can look at and set quantiles based on the rest of the sample. So if you wanted to look at the threshold of X, you can do so with quantile.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile isn’t ideal to simply interpret. It is more complicated than the others, so that is why sometimes people don’t use it.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It offers more information to the end user and is less sensitive to outliers than that of linear.</p>
+<p>Article 5: Click <a href="https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_unpaywall_primary_10_1080_07350015_2021_2013245&amp;context=PC&amp;vid=01FALSC_UWF:UWF&amp;lang=en&amp;search_scope=CentralIndex&amp;adaptor=Primo%20Central&amp;tab=CentralIndex&amp;query=any,contains,quantile%20regression%20explained&amp;offset=10">HERE</a> for citation. Click <a href="https://www.tandfonline.com/doi/pdf/10.1080/07350015.2021.2013245">HERE</a> for article.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This article’s aim is to prevent crossing quantiles. When you have a quantile regression formula, it will often eventually cross into the next quantile when extrapolated. That really does make sense. You cannot assume that the quantile you are analyzing will have a regression equation that traps and keeps estimated values in that quantile infinitely.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The “curse of dimensionality” is the growing number of dimensions in a data set curses the data set into becoming exponentially more complex.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Great alternative to the least square regression.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantile functions cannot cross each other. However, the estimated regression curves can.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This article helped show methods of not crossing.</p>
+<p>o&nbsp;&nbsp; It developed methods to prevent the crossing of the estimated quantile curves.</p>
+<p>o&nbsp;&nbsp; Studied the CQR method.</p>
+<p>Article 6: Click <a href="https://uwf-flvc.primo.exlibrisgroup.com/discovery/fulldisplay?docid=cdi_jstor_primary_24739489&amp;context=PC&amp;vid=01FALSC_UWF:UWF&amp;lang=en&amp;search_scope=CentralIndex&amp;adaptor=Primo%20Central&amp;tab=CentralIndex&amp;query=any,contains,quantile%20regression%20explained&amp;offset=40">HERE</a> for citation. Click <a href="https://www-jstor-org.ezproxy.lib.uwf.edu/stable/pdf/24739489">HERE</a> for article.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This article tackles what to do with missing data and quantile regression.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Being able to incorporate and include the outliers in the regressions allows for quantiles to be more resistant overall to outliers affecting the entire model itself.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inverse probability weighting methods are gained popularity in the 90s to help with missing data.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I feel like though in my project I am just going to naomit.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
