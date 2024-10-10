@@ -1,0 +1,65 @@
+---
+title: "Table and Visuals"
+format: html
+editor: visual
+---
+
+```{r}
+library(haven)
+library(tidyverse)
+
+brfssdata <- read_xpt("LLCP2023.XPT")
+```
+
+```{r}
+#brfssdata <- brfssdata %>%
+#rename(state= '_STATE')
+
+brfssdata <- brfssdata %>%
+  filter(state == 12) %>%
+  select(GENHLTH, PHYSHLTH, MENTHLTH, POORHLTH, EDUCA, INCOME3, FLUSHOT7, SEXVAR) %>%
+  na.omit()
+```
+
+```{r}
+#Histograms
+hist(brfssdata$GENHLTH)
+hist(brfssdata$PHYSHLTH)
+hist(brfssdata$MENTHLTH)
+hist(brfssdata$POORHLTH)
+hist(brfssdata$EDUCA)
+hist(brfssdata$INCOME3)
+hist(brfssdata$FLUSHOT7)
+```
+
+```{r}
+#Table
+library(tableone)
+table1 <- CreateTableOne(data = brfssdata)
+print(table1)
+```
+
+```{r}
+#More Advanced Table One
+
+#Here I am transforming my columns to Categorical Variables and identifying my variables
+catVars <- c("GENHLTH","EDUCA","FLUSHOT7","SEXVAR")
+myVars <- c("GENHLTH","PHYSHLTH","MENTHLTH","POORHLTH","EDUCA","INCOME3","FLUSHOT7","SEXVAR")
+
+#Making the table one now
+table2 <- CreateTableOne(vars=myVars,data=brfssdata,factorVars = catVars)
+
+#showing all levels of categorical variables
+print(table2, showAllLevels = TRUE, formatOptions = list(big.mark=","))
+```
+
+```{r}
+#Summary Table for table2
+summary(table2)
+```
+
+```{r}
+#Here I want to create a really complicated TableOne
+table3 <- CreateTableOne(vars=myVars,strata="FLUSHOT7",data=brfssdata,factorVars=catVars)
+print(table3,formatOptions=list(big.mark=","))
+```
