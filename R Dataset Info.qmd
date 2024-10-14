@@ -15,10 +15,18 @@ brfssdata <- read_xpt("LLCP2023.XPT")
 #brfssdata <- brfssdata %>%
 #rename(state= '_STATE')
 
-brfssdata <- brfssdata %>%
+brfssdata2 <- brfssdata %>%
   filter(state == 12) %>%
-  select(GENHLTH, PHYSHLTH, MENTHLTH, POORHLTH, EDUCA, INCOME3, FLUSHOT7, SEXVAR) %>%
-  na.omit()
+  select(GENHLTH, PHYSHLTH, MENTHLTH, POORHLTH, EDUCA, INCOME3, FLUSHOT7, SEXVAR, WEIGHT2) %>%
+  na.omit() %>%
+  mutate(GENHLTH=as.factor(GENHLTH)) %>%
+  mutate(PHYSHLTH=as.factor(PHYSHLTH)) %>%
+  mutate(MENTHLTH=as.factor(MENTHLTH)) %>%
+  mutate(POORHLTH=as.factor(POORHLTH)) %>%
+  mutate(EDUCA=as.factor(EDUCA)) %>%
+  mutate(INCOME3=as.factor(INCOME3)) %>%
+  mutate(FLUSHOT7=as.factor(FLUSHOT7)) %>%
+  mutate(SEXVAR=as.factor(SEXVAR))
 ```
 
 ```{r}
@@ -30,6 +38,7 @@ hist(brfssdata$POORHLTH)
 hist(brfssdata$EDUCA)
 hist(brfssdata$INCOME3)
 hist(brfssdata$FLUSHOT7)
+hist(brfssdata$WEIGHT2)
 ```
 
 ```{r}
@@ -62,4 +71,15 @@ summary(table2)
 #Here I want to create a really complicated TableOne
 table3 <- CreateTableOne(vars=myVars,strata="FLUSHOT7",data=brfssdata,factorVars=catVars)
 print(table3,formatOptions=list(big.mark=","))
+```
+
+```{r}
+#These are my models
+library(quantreg)
+
+m1 <- rq(brfssdata2$WEIGHT2~brfssdata2$GENHLTH+brfssdata2$PHYSHLTH+brfssdata2$MENTHLTH+brfssdata2$POORHLTH+brfssdata2$EDUCA+brfssdata2$INCOME3+brfssdata2$FLUSHOT7+brfssdata2$SEXVAR, data=brfssdata, tau = 0.25)
+
+m2 <- rq(brfssdata2$WEIGHT2~brfssdata2$GENHLTH+brfssdata2$PHYSHLTH+brfssdata2$MENTHLTH+brfssdata2$POORHLTH+brfssdata2$EDUCA+brfssdata2$INCOME3+brfssdata2$FLUSHOT7+brfssdata2$SEXVAR, data=brfssdata, tau = 0.50)
+
+m3 <- rq(brfssdata2$WEIGHT2~brfssdata2$GENHLTH+brfssdata2$PHYSHLTH+brfssdata2$MENTHLTH+brfssdata2$POORHLTH+brfssdata2$EDUCA+brfssdata2$INCOME3+brfssdata2$FLUSHOT7+brfssdata2$SEXVAR, data=brfssdata, tau = 0.75)
 ```
