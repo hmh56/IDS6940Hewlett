@@ -1,0 +1,20 @@
+---
+title: "Table Shell"
+author: "Hamilton Hewlett"
+format: html
+editor: visual
+---
+
+
+|        |             | MM25 n= | MM50 n= | MM75 n= |
+|--------|-------------|---------|---------|---------|
+| Height |             |         |         |         |
+|        | Coefficient |         |         |         |
+|        | U CI        |         |         |         |
+|        | L CI        |         |         |         |
+|        | P Value     |         |         |         |
+| Weight |             |         |         |         |
+|        | Coefficient |         |         |         |
+|        | U CI        |         |         |         |
+|        | L CI        |         |         |         |
+|        | P Value     |         |         |         |
