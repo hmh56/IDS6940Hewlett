@@ -1,0 +1,143 @@
+---
+title: "Data Analysis Try 2"
+author: "Hamilton Hewlett"
+format: html
+editor: visual
+---
+
+### Loading in the BRFSS data.
+
+```{r}
+library(haven)
+library(tidyverse)
+
+brfssdata <- read_xpt("LLCP2023.XPT")
+brfssdata <- brfssdata %>%
+rename(state= '_STATE')
+```
+
+### Drilling down the data for what is needed for the analysis.
+
+```{r}
+data <- brfssdata %>%
+  filter(state == 12) %>%
+  filter(DIABETE4 == 1) %>%
+  filter(WEIGHT2<2500) %>%
+  select(DIABAGE4, WEIGHT2) %>%
+  na.omit()
+```
+
+### Table1 and Figures
+
+```{r}
+library(tableone)
+table1 <- CreateTableOne(data = data)
+print(table1)
+
+hist(data$DIABAGE4)
+hist(data$WEIGHT2)
+
+summary(data$DIABAGE4)
+summary(data$WEIGHT2)
+```
+
+### Analysis
+
+```{r}
+library(quantreg)
+
+m25 <- rq(data$DIABAGE4~data$WEIGHT2, data=data, tau = 0.25)
+m50 <- rq(data$DIABAGE4~data$WEIGHT2, data=data, tau = 0.50)
+m75 <- rq(data$DIABAGE4~data$WEIGHT2, data=data, tau = 0.75)
+
+round(coefficients(m25),5)
+round(coefficients(m50),5)
+round(coefficients(m75),5)
+
+graphdata <- data %>%
+  mutate(m25reg = 44.14939 + WEIGHT2*-0.00053,
+         m50reg = 53.06498 + WEIGHT2*-0.00031,
+         m75reg = 63.98363 + WEIGHT2*0.00010)
+graphdata %>%
+  ggplot(aes(x=WEIGHT2,y=DIABAGE4))+
+  geom_point()+
+  geom_line(aes(y=m25reg, color="blue"))+
+  annotate("text", x=600, y=95, label="m25reg is blue",size=3)+
+  geom_line(aes(y=m50reg, color="orange"))+
+  annotate("text", x=600, y=90, label="m50reg is orange",size=3)+
+  geom_line(aes(y=m75reg, color="pink"))+
+  annotate("text", x=600, y=85, label="m75reg is pink",size=3)+
+  labs(y="Age",x="Weight")+
+  theme_bw()
+```
+
+### Summary of models
+
+```{r}
+summary(m25)
+summary(m50)
+summary(m75)
+```
+
+### Adding in Height as another variable
+
+```{r}
+data2 <- brfssdata %>%
+  filter(state == 12) %>%
+  filter(DIABETE4 == 1) %>%
+  filter(WEIGHT2<2500) %>%
+  filter(HEIGHT3<2500) %>%
+  select(DIABAGE4, WEIGHT2, HEIGHT3) %>%
+  na.omit()
+```
+
+### Table1 and Figures
+
+```{r}
+table2 <- CreateTableOne(data = data2)
+print(table1)
+
+hist(data2$DIABAGE4)
+hist(data2$WEIGHT2)
+hist(data2$HEIGHT3)
+
+summary(data2$DIABAGE4)
+summary(data2$WEIGHT2)
+summary(data2$HEIGHT3)
+```
+
+### Analysis
+
+```{r}
+mm25 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data, tau = 0.25)
+mm50 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data, tau = 0.50)
+mm75 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data, tau = 0.75)
+
+round(coefficients(mm25),5)
+round(coefficients(mm50),5)
+round(coefficients(mm75),5)
+
+graphdata2 <- data2 %>%
+  mutate(mm25reg = 46.12525 + WEIGHT2*-0.02405 + HEIGHT3*0.00501,
+         mm50reg = 63.50396 + WEIGHT2*-0.04386 + HEIGHT3*-0.00296,
+         mm75reg = 74.10256 + WEIGHT2*0.06340 + HEIGHT3*0.00466)
+graphdata2 %>%
+  ggplot(aes(x=WEIGHT2,y=DIABAGE4))+
+  geom_point()+
+  geom_line(aes(y=mm25reg, color="blue"))+
+  annotate("text", x=600, y=95, label="mm25reg is blue",size=3)+
+  geom_line(aes(y=mm50reg, color="orange"))+
+  annotate("text", x=600, y=90, label="mm50reg is orange",size=3)+
+  geom_line(aes(y=mm75reg, color="pink"))+
+  annotate("text", x=600, y=85, label="mm75reg is pink",size=3)+
+  labs(y="Age",x="Weight")+
+  theme_bw()
+```
+
+### Summary of Model
+
+```{r}
+summary(mm25)
+summary(mm50)
+summary(mm75)
+```
