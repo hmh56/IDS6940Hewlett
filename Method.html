@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="Method_files/libs/clipboard/clipboard.min.js"></script>
@@ -100,22 +120,34 @@ window.Quarto = {
 
 <section id="linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression">Linear Regression</h2>
-<p>Historically, people have relied on linear regression to interpret data for large data sets. Linear regression is something that is taught in grade school all the way through grad school. It is a great basis and tool for measuring linearity between input and output. For the sake of simplicity, first I am going to discuss simple linear regression. Ideally you can create a model based on your input to predict your output. With linear regression you can predict (look toward future values) and explain (look back on past valuies). Understanding what you can do with this tool creates an easier picture. Simple linear regression uses data to create a predictor line the explain your inputs relationship to the output. There are a few assumptions with linear regression that must be considered. First, your slope is constant, to have linear regression your slope cannot change with the various inputs given. The rest of the assumptions can be explained first using this model, $y=B_0+B_1 X+E$. The <span class="math inline">\(B_0\)</span> is the intercept, the <span class="math inline">\(B_1X\)</span> is the constant slope with the input of <span class="math inline">\(B_1\)</span> assigned to it. The <span class="math inline">\(E\)</span> is an error term. There are some assumptions with the error term. First, the formula is linear, so the expected value of <span class="math inline">\(E\)</span> is zero. Second, all error terms have the same variance. Third, errors are independent from one another. Fourth, errors are a normally distributed variable. However, what can you do if you have more than one independent variable applying to your slope?</p>
-</section>
-<section id="ordinary-least-squares-regression" class="level2">
-<h2 class="anchored" data-anchor-id="ordinary-least-squares-regression">Ordinary Least Squares Regression</h2>
-<p>This form of linear regression accounts for more variables to be used in order to make your prediction. This form of regression focuses on the mean of your data. This is heavily relied on and is what the basis for the model rests. There are a few things wrong with this method though, you cannot account for out-liars and you cannot group your data based on categorical predictors. Quantile Regression can fix this problem.</p>
+<p>Historically, people have relied on linear regression to interpret data for large data sets. Linear regression is something that is taught in grade school all the way through grad school. It is a great basis and tool for measuring linearity between input and output. For the sake of simplicity, I am going to discuss simple linear regression.</p>
+<p>Ideally you can create a model based on your input to predict your output. With linear regression you can predict (look toward future values) and explain (look back on past values). Understanding what you can do with this tool creates an easier picture. Simple linear regression uses data to create a regression line to the explain your inputs relationship to the output. There are a few assumptions with linear regression that must be considered.</p>
+<p>First, your slope is constant, to have linear regression your slope cannot change with the various inputs given. The rest of the assumptions can be explained first using this model, <span class="math inline">\(y=B_0+B_1 X+E\)</span>. The <span class="math inline">\(B_0\)</span> is the intercept, the <span class="math inline">\(B_1X\)</span> is the constant slope with the input of <span class="math inline">\(B_1\)</span> assigned to it. The <span class="math inline">\(E\)</span> is an error term. There are some assumptions with the error term. First, the formula is linear, so the expected value of <span class="math inline">\(E\)</span> is zero. Second, all error terms have the same variance. Third, errors are independent from one another. Fourth, errors are a normally distributed variable (Site Zambessi). There are some things that linear regression lacks in.</p>
+<p>Linear regression does not provide a fully accurate representation of larger data sets that may have outliers. Linear regression cannot show you varying levels of data analysis. However, quantile regression can. Roger Koekner gives a great summary of what linear lacks in his presentation on quantile regression. Koekner says “Just as the mean gives an incomplete picture of a single distribution, so the regression curves gives a correspondingly incomplete picture for a set of distributions” <span class="citation" data-cites="koekner">(<a href="#ref-koekner" role="doc-biblioref"><strong>koekner?</strong></a> slides)</span>. Roger is explaining that one single regression or one mean cannot tell the story of a data model. Roger is showing the need for quantile regression.</p>
 </section>
 <section id="quantile-regression" class="level2">
 <h2 class="anchored" data-anchor-id="quantile-regression">Quantile Regression</h2>
-<p>This form of regression allows for you to look at certain blocks of your data. Instead of creating a mean model for the entire thing, you can look at sections. You can break the data down however you would like. This allows for your regression equations to have a more crisp picture of each section. The out-liars in the top section of data will not influence the bottom and vice versa. There are some stipulations around this though. The more quantiles that are added, the smaller your sample size becomes. When you break your data into these sections you are actually breaking the sample population up and only looking at what fits in the given quantile. This can potentially cause validity issues if questioned about sample size. You also may run into crossing which theoretically shouldn’t happen but seems inevitable. It is a worry that would make you think this method should be deemed invalid. Think of 4 equations across a data set split up between the varrying sections within the data. Knowing that unless a line is perfectly parralel with another, intersection is deemed to happen at some point. A non crossing model is attainable.</p>
+<p>This form of regression allows for you to look at certain blocks of your data. Instead of creating a mean model, you can look at sections. You can break the data down however you would like. This allows for your regression equations to have a more crisp picture of each section. The outliers in the top section of data will not influence the bottom and vice versa.</p>
+<p>The more quantiles that are added, the smaller your sample size becomes. When you break your data into these sections you are actually breaking the sample population up and only looking at what fits in the given quantile. This can potentially cause validity issues if questioned about sample size [<span class="citation" data-cites="cookmanning2013">Cook B (<a href="#ref-cookmanning2013" role="doc-biblioref">2013</a>)</span>]. You also may run into crossing which shouldn’t happen but seems inevitable. It is a worry that would make you think this method should be deemed invalid. Think of 4 equations across a data set split up between the varying sections within the data. Knowing that unless a line is perfectly parallel with another, intersection is deemed to happen at some point. A non crossing model is attainable. A great advantage to quantile regression is that you gain an “understanding relationship between variables outside of the mean of the data” [<span class="citation" data-cites="cookmanning2013">Cook B (<a href="#ref-cookmanning2013" role="doc-biblioref">2013</a>)</span>]. This allows for better interpretation for non normal distributions <span class="citation" data-cites="cookmanning2013">(<a href="#ref-cookmanning2013" role="doc-biblioref">Cook B 2013</a>)</span>.</p>
 </section>
-<section id="statistical-programming" class="level2">
-<h2 class="anchored" data-anchor-id="statistical-programming">Statistical Programming</h2>
+<section id="non-parametric-quantile-regression" class="level2">
+<h2 class="anchored" data-anchor-id="non-parametric-quantile-regression">Non Parametric Quantile Regression</h2>
+</section>
+<section id="statistical-programming-and-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-programming-and-analysis">Statistical Programming and Analysis</h2>
 <p>Data analysis was completed using R 4.4.1.</p>
 </section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p># References. Pretty sure this has to be in markdown for this to work like this.</p>
 
-</main>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cookmanning2013" class="csl-entry" role="listitem">
+Cook B, Manning W. 2013. <span>“Thinking Beyond the Mean: A Practical Guide for Using Quantile Regression Methods for Health Services Research.”</span> <em>Shanghai Arch Psychiatry</em> 25 (1): 55–59.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

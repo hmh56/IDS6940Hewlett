@@ -3,20 +3,31 @@ title: "Method"
 author: "Hamilton Hewlett"
 format: html
 editor: visual
+bibliography: references.bib
 ---
 
 ## Linear Regression
 
-Historically, people have relied on linear regression to interpret data for large data sets. Linear regression is something that is taught in grade school all the way through grad school. It is a great basis and tool for measuring linearity between input and output. For the sake of simplicity, first I am going to discuss simple linear regression. Ideally you can create a model based on your input to predict your output. With linear regression you can predict (look toward future values) and explain (look back on past valuies). Understanding what you can do with this tool creates an easier picture. Simple linear regression uses data to create a predictor line the explain your inputs relationship to the output. There are a few assumptions with linear regression that must be considered. First, your slope is constant, to have linear regression your slope cannot change with the various inputs given. The rest of the assumptions can be explained first using this model, \$y=B_0+B_1 X+E\$. The $B_0$ is the intercept, the $B_1X$ is the constant slope with the input of $B_1$ assigned to it. The $E$ is an error term. There are some assumptions with the error term. First, the formula is linear, so the expected value of $E$ is zero. Second, all error terms have the same variance. Third, errors are independent from one another. Fourth, errors are a normally distributed variable. However, what can you do if you have more than one independent variable applying to your slope?
+Historically, people have relied on linear regression to interpret data for large data sets. Linear regression is something that is taught in grade school all the way through grad school. It is a great basis and tool for measuring linearity between input and output. For the sake of simplicity, I am going to discuss simple linear regression.
 
-## Ordinary Least Squares Regression
+Ideally you can create a model based on your input to predict your output. With linear regression you can predict (look toward future values) and explain (look back on past values). Understanding what you can do with this tool creates an easier picture. Simple linear regression uses data to create a regression line to the explain your inputs relationship to the output. There are a few assumptions with linear regression that must be considered.
 
-This form of linear regression accounts for more variables to be used in order to make your prediction. This form of regression focuses on the mean of your data. This is heavily relied on and is what the basis for the model rests. There are a few things wrong with this method though, you cannot account for out-liars and you cannot group your data based on categorical predictors. Quantile Regression can fix this problem.
+First, your slope is constant, to have linear regression your slope cannot change with the various inputs given. The rest of the assumptions can be explained first using this model, $y=B_0+B_1 X+E$. The $B_0$ is the intercept, the $B_1X$ is the constant slope with the input of $B_1$ assigned to it. The $E$ is an error term. There are some assumptions with the error term. First, the formula is linear, so the expected value of $E$ is zero. Second, all error terms have the same variance. Third, errors are independent from one another. Fourth, errors are a normally distributed variable (Site Zambessi). There are some things that linear regression lacks in.
+
+Linear regression does not provide a fully accurate representation of larger data sets that may have outliers. Linear regression cannot show you varying levels of data analysis. However, quantile regression can. Roger Koekner gives a great summary of what linear lacks in his presentation on quantile regression. Koekner says "Just as the mean gives an incomplete picture of a single distribution, so the regression curves gives a correspondingly incomplete picture for a set of distributions" [@koekner slides]. Roger is explaining that one single regression or one mean cannot tell the story of a data model. Roger is showing the need for quantile regression.
 
 ## Quantile Regression
 
-This form of regression allows for you to look at certain blocks of your data. Instead of creating a mean model for the entire thing, you can look at sections. You can break the data down however you would like. This allows for your regression equations to have a more crisp picture of each section. The out-liars in the top section of data will not influence the bottom and vice versa. There are some stipulations around this though. The more quantiles that are added, the smaller your sample size becomes. When you break your data into these sections you are actually breaking the sample population up and only looking at what fits in the given quantile. This can potentially cause validity issues if questioned about sample size. You also may run into crossing which theoretically shouldn't happen but seems inevitable. It is a worry that would make you think this method should be deemed invalid. Think of 4 equations across a data set split up between the varrying sections within the data. Knowing that unless a line is perfectly parralel with another, intersection is deemed to happen at some point. A non crossing model is attainable.
+This form of regression allows for you to look at certain blocks of your data. Instead of creating a mean model, you can look at sections. You can break the data down however you would like. This allows for your regression equations to have a more crisp picture of each section. The outliers in the top section of data will not influence the bottom and vice versa.
 
-## Statistical Programming
+The more quantiles that are added, the smaller your sample size becomes. When you break your data into these sections you are actually breaking the sample population up and only looking at what fits in the given quantile. This can potentially cause validity issues if questioned about sample size \[@cookmanning2013\]. You also may run into crossing which shouldn't happen but seems inevitable. It is a worry that would make you think this method should be deemed invalid. Think of 4 equations across a data set split up between the varying sections within the data. Knowing that unless a line is perfectly parallel with another, intersection is deemed to happen at some point. A non crossing model is attainable. A great advantage to quantile regression is that you gain an "understanding relationship between variables outside of the mean of the data" \[@cookmanning2013\]. This allows for better interpretation for non normal distributions [@cookmanning2013].
+
+## Non Parametric Quantile Regression
+
+## Statistical Programming and Analysis
 
 Data analysis was completed using R 4.4.1.
+
+## References
+
+\# References. Pretty sure this has to be in markdown for this to work like this.
