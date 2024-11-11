@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.4.555" />
 
-<meta name="author" content="Hamilton Hewlett">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<meta name="author" content="Hamilton Hewlett" />
 
 <title>Method</title>
 <style>
@@ -20,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -43,17 +79,7 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
-<script src="Method_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Method_files/libs/quarto-html/quarto.js"></script>
-<script src="Method_files/libs/quarto-html/popper.min.js"></script>
-<script src="Method_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Method_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Method_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Method_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Method_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Method_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Method_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<!-- htmldependencies:E3FAD763 -->
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -87,10 +113,11 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -119,37 +146,481 @@ window.Quarto = {
 
 
 <section id="linear-regression" class="level2">
-<h2 class="anchored" data-anchor-id="linear-regression">Linear Regression</h2>
+<h2>Linear Regression</h2>
 <p>Historically, people have relied on linear regression to interpret data for large data sets. Linear regression is something that is taught in grade school all the way through grad school. It is a great basis and tool for measuring linearity between input and output. For the sake of simplicity, I am going to discuss simple linear regression.</p>
 <p>Ideally you can create a model based on your input to predict your output. With linear regression you can predict (look toward future values) and explain (look back on past values). Understanding what you can do with this tool creates an easier picture. Simple linear regression uses data to create a regression line to the explain your inputs relationship to the output. There are a few assumptions with linear regression that must be considered.</p>
-<p>First, your slope is constant, to have linear regression your slope cannot change with the various inputs given. The rest of the assumptions can be explained first using this model, <span class="math inline">\(y=B_0+B_1 X+E\)</span>. The <span class="math inline">\(B_0\)</span> is the intercept, the <span class="math inline">\(B_1X\)</span> is the constant slope with the input of <span class="math inline">\(B_1\)</span> assigned to it. The <span class="math inline">\(E\)</span> is an error term. There are some assumptions with the error term. First, the formula is linear, so the expected value of <span class="math inline">\(E\)</span> is zero. Second, all error terms have the same variance. Third, errors are independent from one another. Fourth, errors are a normally distributed variable (Site Zambessi). There are some things that linear regression lacks in.</p>
-<p>Linear regression does not provide a fully accurate representation of larger data sets that may have outliers. Linear regression cannot show you varying levels of data analysis. However, quantile regression can. Roger Koekner gives a great summary of what linear lacks in his presentation on quantile regression. Koekner says “Just as the mean gives an incomplete picture of a single distribution, so the regression curves gives a correspondingly incomplete picture for a set of distributions” <span class="citation" data-cites="koekner">(<a href="#ref-koekner" role="doc-biblioref"><strong>koekner?</strong></a> slides)</span>. Roger is explaining that one single regression or one mean cannot tell the story of a data model. Roger is showing the need for quantile regression.</p>
+<p>First, your slope is constant, to have linear regression your slope cannot change with the various inputs given. The rest of the assumptions can be explained first using this model, <span class="math inline">\(y=B_0+B_1 X+E\)</span>. The <span class="math inline">\(B_0\)</span> is the intercept, the <span class="math inline">\(B_1X\)</span> is the constant slope with the input of <span class="math inline">\(B_1\)</span> assigned to it. The <span class="math inline">\(E\)</span> is an error term. There are some assumptions with the error term. First, the formula is linear, so the expected value of <span class="math inline">\(E\)</span> is zero. Second, all error terms have the same variance. Third, errors are independent from one another. Fourth, errors are a normally distributed variable <span class="citation" data-cites="zambesi2024">(<a href="#ref-zambesi2024" role="doc-biblioref">Zambesi 2024</a>)</span>. There are some things that linear regression lacks in.</p>
+<p>Linear regression does not provide a fully accurate representation of larger data sets that may have outliers. Linear regression cannot show you varying levels of data analysis. However, quantile regression can. Roger Koekner gives a great summary of what linear lacks in his presentation on quantile regression. Koekner says “Just as the mean gives an incomplete picture of a single distribution, so the regression curves gives a correspondingly incomplete picture for a set of distributions” <span class="citation" data-cites="koenker2010">(<a href="#ref-koenker2010" role="doc-biblioref">Koenker 2010</a>)</span>. Roger is explaining that one single regression or one mean cannot tell the story of a data model. Roger is showing the need for quantile regression.</p>
 </section>
 <section id="quantile-regression" class="level2">
-<h2 class="anchored" data-anchor-id="quantile-regression">Quantile Regression</h2>
+<h2>Quantile Regression</h2>
 <p>This form of regression allows for you to look at certain blocks of your data. Instead of creating a mean model, you can look at sections. You can break the data down however you would like. This allows for your regression equations to have a more crisp picture of each section. The outliers in the top section of data will not influence the bottom and vice versa.</p>
-<p>The more quantiles that are added, the smaller your sample size becomes. When you break your data into these sections you are actually breaking the sample population up and only looking at what fits in the given quantile. This can potentially cause validity issues if questioned about sample size [<span class="citation" data-cites="cookmanning2013">Cook B (<a href="#ref-cookmanning2013" role="doc-biblioref">2013</a>)</span>]. You also may run into crossing which shouldn’t happen but seems inevitable. It is a worry that would make you think this method should be deemed invalid. Think of 4 equations across a data set split up between the varying sections within the data. Knowing that unless a line is perfectly parallel with another, intersection is deemed to happen at some point. A non crossing model is attainable. A great advantage to quantile regression is that you gain an “understanding relationship between variables outside of the mean of the data” [<span class="citation" data-cites="cookmanning2013">Cook B (<a href="#ref-cookmanning2013" role="doc-biblioref">2013</a>)</span>]. This allows for better interpretation for non normal distributions <span class="citation" data-cites="cookmanning2013">(<a href="#ref-cookmanning2013" role="doc-biblioref">Cook B 2013</a>)</span>.</p>
+<p>The more quantiles that are added, the smaller your sample size becomes. When you break your data into these sections you are actually breaking the sample population up and only looking at what fits in the given quantile. This can potentially cause validity issues if questioned about sample size <span class="citation" data-cites="cookmanning2013">(<a href="#ref-cookmanning2013" role="doc-biblioref">Cook B 2013</a>)</span>. You also may run into crossing which shouldn’t happen but seems inevitable. It is a worry that would make you think this method should be deemed invalid. Think of 4 equations across a data set split up between the varying sections within the data. Knowing that unless a line is perfectly parallel with another, intersection is deemed to happen at some point. A non crossing model is attainable. A great advantage to quantile regression is that you gain an “understanding relationship between variables outside of the mean of the data” <span class="citation" data-cites="cookmanning2013">(<a href="#ref-cookmanning2013" role="doc-biblioref">Cook B 2013</a>)</span>. This allows for better interpretation for non normal distributions <span class="citation" data-cites="cookmanning2013">(<a href="#ref-cookmanning2013" role="doc-biblioref">Cook B 2013</a>)</span>. This provides a solid</p>
 </section>
-<section id="non-parametric-quantile-regression" class="level2">
-<h2 class="anchored" data-anchor-id="non-parametric-quantile-regression">Non Parametric Quantile Regression</h2>
+<section id="nonparametric-quantile-regression" class="level2">
+<h2>Nonparametric Quantile Regression</h2>
+<p>For this analysis, we will be using non parametric quantile regression. We do not need to ensure we have met assumptions that you normally would with quantile regression. Koenker, Rey, and Aghion discuss this in their publication “Quantile Regression: 40 Years On.” They discuss that nonparametric regression relaxes the strict linearity in co-variate assumptions of the foregoing methods while preserving the convenient linear in parameters structure that facilitates efficient computation” <span class="citation" data-cites="koenkerreyaghion2017">(<a href="#ref-koenkerreyaghion2017" role="doc-biblioref">Koenker R 2017</a>)</span>. They are saying that with nonparametric methods, we do not have to meet the normal linear assumptions given. We can still create quality models while not having to adhere to the norms. Assumptions like equal variances, independent errors, and normally distributed models <span class="citation" data-cites="zambesi2024">(<a href="#ref-zambesi2024" role="doc-biblioref">Zambesi 2024</a>)</span> can be ignored. The formula for nonlinear (in parameters) quantile regression is <span class="math display">\[Q_{Y_{i}}(\tau | x) = g(x,\theta(\tau))\]</span> <span class="citation" data-cites="koenkerreyaghion2017">(<a href="#ref-koenkerreyaghion2017" role="doc-biblioref">Koenker R 2017</a>)</span>.</p>
 </section>
+<section id="data-set" class="level2">
+<h2>Data Set</h2>
+<p>The data used is behavioral risk factor surveillance system data (BRFSS). BRFSS data is big data. This data is large, complex, often has varying responses. Many of these questions are collected by asking people response type of questions. This data is some of the most difficult to collect and can often times have many NA responses. For this paper, I am specifically looking at the state of Florida data and excluding and NA responses that might have been collected in the acquisition process. Below is a Table One that I created to give some insight on various variables in the data set.</p>
+<p>The below data was collected and organized by questions answered about FLUSHOT7. In this table, FLUSHOT7 is a variable for the past twelve months, has the participant had a flu vaccine. The results for this variable are 1 (Yes), 2 (No), 7 (Don’t know), and 9 (Refused). GENHLTH is a variable for participants that rate their own health. The options are 1 (Excellent), 2 (Very good), 3 (Good), 4 (Fair), 5 (Poor), 7 (Don’t know/Not sure), 9 (Refused), and BLANK (Not asked or Missing). PHYSHLTH is a variable used for participants to express how many days of the past thirty days their health was not good. The responses were 1-30 (Number of days), 88 (None), 77 (Don’t know/Not sure), 99 (Refused), and BLANK (Not asked or Missing). MENTHLTH is a variable used for participants to express how many days of the past thirty days their mental health was not good. The responses accepted were the same as PHYSHLTH. POORHLTH is a variable used for participants to express how many days of the past thirty days their health limited them from doing activities such as self-care, work, or recreation. The responses acceptable were the same as PHYSHLTH. EDUCA is a variable for participants to share the highest grade of school completed. The acceptable responses were 1 (Never attended school or only kindergarten), 2 (Grade 1 - 8), 3 (Grades 9 -11), 4 (Grade 12 or GED), 5 (College 1- 3 years), 6 (College 4 years or more), 9 (Refused), BLANK ( Not asked or Missing). INCOME3 is a variable used for participants to share their income level. The responses to choose from are 1 (&lt; $10M), 2 (&lt;$15M), 3 (&lt;$20M), 4 (&lt;$25M), 5 (&lt;$35M), 6 (&lt;$50M), 7 (&lt;$75M), 8 (&lt;$100M), 9 (&lt;$150M), 10 (&lt;$200M), 11 (&gt;$200M), 77 (Don’t know/Not sure), 99 (Refused), BLANK (Not asked or Missing). SEXVAR is a variable for participants to share their sex. The responses to choose from are 1 (Male) and 2 (Female).</p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stratified by FLUTSHOT7</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>1</td>
+<td>2</td>
+<td>7</td>
+<td>9</td>
+<td>P</td>
+</tr>
+<tr class="even">
+<td>n</td>
+<td>2919</td>
+<td>3982</td>
+<td>52</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>GENHLTH(%)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>189 (6.5)</td>
+<td>418 (10.5)</td>
+<td>3 (5.8)</td>
+<td>1 (7.7)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>737 (25.2)</td>
+<td>1024 (25.7)</td>
+<td>13 (25.0)</td>
+<td>2 (15.4)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>1003 (34.4)</td>
+<td>1284 (32.2)</td>
+<td>12 (23.1)</td>
+<td>1 (7.7)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>715 (24.5)</td>
+<td>863 (21.7)</td>
+<td>10 (19.2)</td>
+<td>8 (61.5)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>267 (9.1)</td>
+<td>379 (9.5)</td>
+<td>12 (23.1)</td>
+<td>1 (7.7)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>6 (0.2)</td>
+<td>14 (0.4)</td>
+<td>2 (3.8)</td>
+<td>0 (0.0)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>2 (0.1)</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>PHYSHLTH (mean (SD))</td>
+<td>32.22 (34.35)</td>
+<td>38.18 (36.50)</td>
+<td>39.12 (33.90)</td>
+<td>42.77 (35.30)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="even">
+<td>MENTHLTH (mean(SD))</td>
+<td>44.31 (38.85)</td>
+<td>37.88 (36.36)</td>
+<td>45.92 (35.17)</td>
+<td>66.85 (36.21)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td>POORHLTH (mean(SD))</td>
+<td>52.54 (38.22)</td>
+<td>51.81 (38.18)</td>
+<td>47.63 (36.28)</td>
+<td>61.92 (35.81)</td>
+<td>0.535</td>
+</tr>
+<tr class="even">
+<td>EDUCA (%)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>10 (0.3)</td>
+<td>1 (0.0)</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>36 (1.2)</td>
+<td>94 (2.4)</td>
+<td>2 (3.8)</td>
+<td>0 (0.0)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>118 (4.0)</td>
+<td>254 (6.4)</td>
+<td>5 (9.6)</td>
+<td>2 (15.4)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>653 (22.4)</td>
+<td>1248 (31.3)</td>
+<td>21 (40.4)</td>
+<td>4 (30.8)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>831 (28.5)</td>
+<td>1167 (29.3)</td>
+<td>13 (25.0)</td>
+<td>2 (15.4)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>1254 (43.0)</td>
+<td>1203 (30.2)</td>
+<td>10 (19.2)</td>
+<td>2 (15.4)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>17 (0.6)</td>
+<td>15 (0.4)</td>
+<td>1 (1.9)</td>
+<td>3 (23.1)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>INCOME3 (mean(SD))</td>
+<td>22.40 (33.02)</td>
+<td>19.82 (30.56)</td>
+<td>45.31 (38.07)</td>
+<td>73.54 (40.83)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td>FLUSHOT7 (%)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2919 (100.0)</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0 (0.0)</td>
+<td>3982 (100.0)</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td>52 (100.0)</td>
+<td>0 (0.0)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td>0 (0.0)</td>
+<td>13 (100.0)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SEXVAR = 2(%)</td>
+<td>1753 (60.1)</td>
+<td>2311 (58.0)</td>
+<td>31 (59.6)</td>
+<td>7 (53.8)</td>
+<td>0.394</td>
+</tr>
+</tbody>
+</table>
+<p>This Table One gives us insight on our population. We can observe based on the flu shot data a wide array of variables and how they are broken down per category based on response. The BRFSS data contains many variables, some we will use in our research.</p>
+</section>
+<section id="research-question" class="level2">
+<h2>Research Question</h2>
+<p>The research being conducted revolves around if height and weight are good predictors of age first time being told you have diabetes. I wanted to see if we go further with this question by analyzing quantiles within this sample population. Do the predictions change with the age range of the sample population? The variables I am using to address this questions are DIABAGE4, WEIGHT2, and HEIGHT3.</p>
+<p>DIABAGE4 is a variable that allows participants to share how old they were when told they first had diabetes. The acceptable responses are 1-97 (Age in years), 98 (Don’t know/Not sure), 99 (Refused), and BLANK (Not asked or Missing). WEIGHT2 is a variable for participants to share how much they weigh without shoes on. The responses were acceptable 50-0776 (Weight in pounds), 7777 (Don’t know/Not sure), 9023 - 9352 (Weight in kilograms), 9999 (Refused), and BLANK (Not asked or Missing). HEIGHT3 is a variable that allowed participants to share their height without shoes on. The acceptable responses could of been recorded metric or imperial.</p>
+</section>
+<section id="insert-completed-table-shell-here" class="level1">
+<h1><em>INSERT COMPLETED TABLE SHELL HERE</em></h1>
 <section id="statistical-programming-and-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="statistical-programming-and-analysis">Statistical Programming and Analysis</h2>
-<p>Data analysis was completed using R 4.4.1.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p># References. Pretty sure this has to be in markdown for this to work like this.</p>
+<h2>Statistical Programming and Analysis</h2>
+<p>Data analysis was completed using R 4.4.1. To begin, I had to pull in the XPT file about the entire BRFSS data set. I had to rename a column concerning states as it was not allowing for selection in the next step.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>brfssdata <span class="ot">&lt;-</span> <span class="fu">read_xpt</span>(<span class="st">&quot;LLCP2023.XPT&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>brfssdata <span class="ot">&lt;-</span> brfssdata <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">state=</span> <span class="st">&#39;_STATE&#39;</span>)</span></code></pre></div>
+</div>
+<p>Next, I created smaller data frame in order not to disturb the primary source of data once I got it in R. I did this identifying the variables I wanted, then excluded obvious outliers after examining the data. I choose to look at participants that had diabetes as well. I did not want conflicting information with the age given of being diabetic and a conflicting confirmed diabetic status.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> brfssdata <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DIABETE4 <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WEIGHT2<span class="sc">&lt;</span><span class="dv">2500</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(HEIGHT3<span class="sc">&lt;</span><span class="dv">2500</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(DIABAGE4, WEIGHT2, HEIGHT3) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
+</div>
+<p>I created a new table one and created histograms of the given data as well as summary statistics.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> data2)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(table1)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  country      year  cases population
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1 Afghanistan  1999    745   19987071
+2 Afghanistan  2000   2666   20595360
+3 Brazil       1999  37737  172006362
+4 Brazil       2000  80488  174504898
+5 China        1999 212258 1272915272
+6 China        2000 213766 1280428583</code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data2<span class="sc">$</span>DIABAGE4)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img src="Method_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672" /></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data2<span class="sc">$</span>WEIGHT2)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img src="Method_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672" /></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data2<span class="sc">$</span>HEIGHT3)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img src="Method_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid" width="672" /></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data2<span class="sc">$</span>DIABAGE4)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   2.00   44.00   53.00   54.36   64.00   99.00 </code></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data2<span class="sc">$</span>WEIGHT2)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   61.0   165.0   195.0   199.6   230.0   665.0 </code></pre>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data2<span class="sc">$</span>HEIGHT3)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  400.0   504.0   507.0   521.8   510.0   608.0 </code></pre>
+</div>
+</div>
+<p>Next I created three models using the rq() function from the quantreg library. I created a regression line for the quantiles 0.25, 0.50, and 0.75 sections of the sample population. It is clear to see that the more the weigh and shorter you are…. uh oh.</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantreg)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: SparseM</code></pre>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>mm25 <span class="ot">&lt;-</span> <span class="fu">rq</span>(data2<span class="sc">$</span>DIABAGE4<span class="sc">~</span>data2<span class="sc">$</span>WEIGHT2 <span class="sc">+</span> data2<span class="sc">$</span>HEIGHT3, <span class="at">data=</span>data2, <span class="at">tau =</span> <span class="fl">0.25</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>mm50 <span class="ot">&lt;-</span> <span class="fu">rq</span>(data2<span class="sc">$</span>DIABAGE4<span class="sc">~</span>data2<span class="sc">$</span>WEIGHT2 <span class="sc">+</span> data2<span class="sc">$</span>HEIGHT3, <span class="at">data=</span>data2, <span class="at">tau =</span> <span class="fl">0.50</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>mm75 <span class="ot">&lt;-</span> <span class="fu">rq</span>(data2<span class="sc">$</span>DIABAGE4<span class="sc">~</span>data2<span class="sc">$</span>WEIGHT2 <span class="sc">+</span> data2<span class="sc">$</span>HEIGHT3, <span class="at">data=</span>data2, <span class="at">tau =</span> <span class="fl">0.75</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#round(coefficients(mm25),5)</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#round(coefficients(mm50),5)</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#round(coefficients(mm75),5)</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>graphdata2 <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mm25reg =</span> <span class="fl">46.12525</span> <span class="sc">+</span> WEIGHT2<span class="sc">*-</span><span class="fl">0.02405</span> <span class="sc">+</span> HEIGHT3<span class="sc">*</span><span class="fl">0.00501</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">mm50reg =</span> <span class="fl">63.50396</span> <span class="sc">+</span> WEIGHT2<span class="sc">*-</span><span class="fl">0.04386</span> <span class="sc">+</span> HEIGHT3<span class="sc">*-</span><span class="fl">0.00296</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">mm75reg =</span> <span class="fl">74.10256</span> <span class="sc">+</span> WEIGHT2<span class="sc">*</span><span class="fl">0.06340</span> <span class="sc">+</span> HEIGHT3<span class="sc">*</span><span class="fl">0.00466</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>graphdata2 <span class="sc">%&gt;%</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>WEIGHT2,<span class="at">y=</span>DIABAGE4))<span class="sc">+</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>mm25reg, <span class="at">color=</span><span class="st">&quot;blue&quot;</span>))<span class="sc">+</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">600</span>, <span class="at">y=</span><span class="dv">95</span>, <span class="at">label=</span><span class="st">&quot;mm25reg is blue&quot;</span>,<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>mm50reg, <span class="at">color=</span><span class="st">&quot;orange&quot;</span>))<span class="sc">+</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">600</span>, <span class="at">y=</span><span class="dv">90</span>, <span class="at">label=</span><span class="st">&quot;mm50reg is orange&quot;</span>,<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>mm75reg, <span class="at">color=</span><span class="st">&quot;pink&quot;</span>))<span class="sc">+</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">600</span>, <span class="at">y=</span><span class="dv">85</span>, <span class="at">label=</span><span class="st">&quot;mm75reg is pink&quot;</span>,<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">&quot;Age&quot;</span>,<span class="at">x=</span><span class="st">&quot;Weight&quot;</span>)<span class="sc">+</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img src="Method_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672" /></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Below is the summary of each model i created for each quantile explored as well as a filled in table shell of the confidence intervals. | | | MM25 n= | MM50 n= | MM75 n= | |——–|————-|———|———|———| | Height | | | | | | | Coefficient | | | | | | U CI | | | | | | L CI | | | | | | P Value | | | | | Weight | | | | | | | Coefficient | | | | | | U CI | | | | | | L CI | | | | | | P Value | | | |</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mm25)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in summary.rq(mm25): 3 non-positive fis</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call: rq(formula = data2$DIABAGE4 ~ data2$WEIGHT2 + data2$HEIGHT3, 
+    tau = 0.25, data = data2)
 
-</section>
+tau: [1] 0.25
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+Coefficients:
+              Value    Std. Error t value  Pr(&gt;|t|)
+(Intercept)   46.12525  6.30719    7.31313  0.00000
+data2$WEIGHT2 -0.02405  0.00400   -6.00457  0.00000
+data2$HEIGHT3  0.00501  0.01173    0.42715  0.66932</code></pre>
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mm50)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in summary.rq(mm50): 2 non-positive fis</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call: rq(formula = data2$DIABAGE4 ~ data2$WEIGHT2 + data2$HEIGHT3, 
+    tau = 0.5, data = data2)
+
+tau: [1] 0.5
+
+Coefficients:
+              Value    Std. Error t value  Pr(&gt;|t|)
+(Intercept)   63.50396  5.32319   11.92969  0.00000
+data2$WEIGHT2 -0.04386  0.00683   -6.42359  0.00000
+data2$HEIGHT3 -0.00296  0.01083   -0.27296  0.78491</code></pre>
+</div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mm75)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in summary.rq(mm75): 3 non-positive fis</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call: rq(formula = data2$DIABAGE4 ~ data2$WEIGHT2 + data2$HEIGHT3, 
+    tau = 0.75, data = data2)
+
+tau: [1] 0.75
+
+Coefficients:
+              Value    Std. Error t value  Pr(&gt;|t|)
+(Intercept)   74.10256  6.34732   11.67463  0.00000
+data2$WEIGHT2 -0.06340  0.00789   -8.03370  0.00000
+data2$HEIGHT3  0.00466  0.01295    0.36010  0.71881</code></pre>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-cookmanning2013" class="csl-entry" role="listitem">
 Cook B, Manning W. 2013. <span>“Thinking Beyond the Mean: A Practical Guide for Using Quantile Regression Methods for Health Services Research.”</span> <em>Shanghai Arch Psychiatry</em> 25 (1): 55–59.
 </div>
-</div></section></div></main>
+<div id="ref-koenkerreyaghion2017" class="csl-entry" role="listitem">
+Koenker R, Aghion P, Rey H. 2017. <span>“Quantile Regression: 40 Years On.”</span> <em>Annual Review of Economics</em> 9 (1): 155–76.
+</div>
+<div id="ref-koenker2010" class="csl-entry" role="listitem">
+Koenker, Roger. 2010. <span>“Nonparametric Quantile Regression.”</span> Lecture 3, University of Illinois Urbana-Champaign.
+</div>
+<div id="ref-zambesi2024" class="csl-entry" role="listitem">
+Zambesi, Alethia. 2024. <span>“Correlation and Regression Overview.”</span> Module 7, University of West Florida.
+</div>
+</div>
+</section>
+</section>
+
+</main>
 <!-- /main column -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -560,7 +1031,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+</body>
 
-
-
-</body></html>
+</html>
