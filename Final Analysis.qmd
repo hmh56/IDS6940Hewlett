@@ -134,10 +134,11 @@ graphdata2 %>%
   theme_bw()
 ```
 
-### Summary of Model
+### Summary of Models & Confidence Intervals
 
 ```{r}
 summary(mm25)
 summary(mm50)
 summary(mm75)
+
 ```
