@@ -12,22 +12,143 @@ Historically, people have relied on linear regression to interpret data for larg
 
 Ideally you can create a model based on your input to predict your output. With linear regression you can predict (look toward future values) and explain (look back on past values). Understanding what you can do with this tool creates an easier picture. Simple linear regression uses data to create a regression line to the explain your inputs relationship to the output. There are a few assumptions with linear regression that must be considered.
 
-First, your slope is constant, to have linear regression your slope cannot change with the various inputs given. The rest of the assumptions can be explained first using this model, $y=B_0+B_1 X+E$. The $B_0$ is the intercept, the $B_1X$ is the constant slope with the input of $B_1$ assigned to it. The $E$ is an error term. There are some assumptions with the error term. First, the formula is linear, so the expected value of $E$ is zero. Second, all error terms have the same variance. Third, errors are independent from one another. Fourth, errors are a normally distributed variable (Site Zambessi). There are some things that linear regression lacks in.
+First, your slope is constant, to have linear regression your slope cannot change with the various inputs given. The rest of the assumptions can be explained first using this model, $y=B_0+B_1 X+E$. The $B_0$ is the intercept, the $B_1X$ is the constant slope with the input of $B_1$ assigned to it. The $E$ is an error term. There are some assumptions with the error term. First, the formula is linear, so the expected value of $E$ is zero. Second, all error terms have the same variance. Third, errors are independent from one another. Fourth, errors are a normally distributed variable [@zambesi2024]. There are some things that linear regression lacks in.
 
-Linear regression does not provide a fully accurate representation of larger data sets that may have outliers. Linear regression cannot show you varying levels of data analysis. However, quantile regression can. Roger Koekner gives a great summary of what linear lacks in his presentation on quantile regression. Koekner says "Just as the mean gives an incomplete picture of a single distribution, so the regression curves gives a correspondingly incomplete picture for a set of distributions" [@koekner slides]. Roger is explaining that one single regression or one mean cannot tell the story of a data model. Roger is showing the need for quantile regression.
+Linear regression does not provide a fully accurate representation of larger data sets that may have outliers. Linear regression cannot show you varying levels of data analysis. However, quantile regression can. Roger Koekner gives a great summary of what linear lacks in his presentation on quantile regression. Koekner says "Just as the mean gives an incomplete picture of a single distribution, so the regression curves gives a correspondingly incomplete picture for a set of distributions" [@koenker2010]. Roger is explaining that one single regression or one mean cannot tell the story of a data model. Roger is showing the need for quantile regression.
 
 ## Quantile Regression
 
 This form of regression allows for you to look at certain blocks of your data. Instead of creating a mean model, you can look at sections. You can break the data down however you would like. This allows for your regression equations to have a more crisp picture of each section. The outliers in the top section of data will not influence the bottom and vice versa.
 
-The more quantiles that are added, the smaller your sample size becomes. When you break your data into these sections you are actually breaking the sample population up and only looking at what fits in the given quantile. This can potentially cause validity issues if questioned about sample size \[@cookmanning2013\]. You also may run into crossing which shouldn't happen but seems inevitable. It is a worry that would make you think this method should be deemed invalid. Think of 4 equations across a data set split up between the varying sections within the data. Knowing that unless a line is perfectly parallel with another, intersection is deemed to happen at some point. A non crossing model is attainable. A great advantage to quantile regression is that you gain an "understanding relationship between variables outside of the mean of the data" \[@cookmanning2013\]. This allows for better interpretation for non normal distributions [@cookmanning2013].
+The more quantiles that are added, the smaller your sample size becomes. When you break your data into these sections you are actually breaking the sample population up and only looking at what fits in the given quantile. This can potentially cause validity issues if questioned about sample size [@cookmanning2013]. You also may run into crossing which shouldn't happen but seems inevitable. It is a worry that would make you think this method should be deemed invalid. Think of 4 equations across a data set split up between the varying sections within the data. Knowing that unless a line is perfectly parallel with another, intersection is deemed to happen at some point. A non crossing model is attainable. A great advantage to quantile regression is that you gain an "understanding relationship between variables outside of the mean of the data" [@cookmanning2013]. This allows for better interpretation for non normal distributions [@cookmanning2013]. This provides a solid
 
-## Non Parametric Quantile Regression
+## Nonparametric Quantile Regression
+
+For this analysis, we will be using non parametric quantile regression. We do not need to ensure we have met assumptions that you normally would with quantile regression. Koenker, Rey, and Aghion discuss this in their publication "Quantile Regression: 40 Years On." They discuss that nonparametric regression relaxes the strict linearity in co-variate assumptions of the foregoing methods while preserving the convenient linear in parameters structure that facilitates efficient computation" [@koenkerreyaghion2017]. They are saying that with nonparametric methods, we do not have to meet the normal linear assumptions given. We can still create quality models while not having to adhere to the norms. Assumptions like equal variances, independent errors, and normally distributed models [@zambesi2024] can be ignored. The formula for nonlinear (in parameters) quantile regression is $$Q_{Y_{i}}(\tau | x) = g(x,\theta(\tau))$$ [@koenkerreyaghion2017].
+
+## Data Set
+
+The data used is behavioral risk factor surveillance system data (BRFSS). BRFSS data is big data. This data is large, complex, often has varying responses. Many of these questions are collected by asking people response type of questions. This data is some of the most difficult to collect and can often times have many NA responses. For this paper, I am specifically looking at the state of Florida data and excluding and NA responses that might have been collected in the acquisition process. Below is a Table One that I created to give some insight on various variables in the data set.
+
+The below data was collected and organized by questions answered about FLUSHOT7. In this table, FLUSHOT7 is a variable for the past twelve months, has the participant had a flu vaccine. The results for this variable are 1 (Yes), 2 (No), 7 (Don't know), and 9 (Refused). GENHLTH is a variable for participants that rate their own health. The options are 1 (Excellent), 2 (Very good), 3 (Good), 4 (Fair), 5 (Poor), 7 (Don't know/Not sure), 9 (Refused), and BLANK (Not asked or Missing). PHYSHLTH is a variable used for participants to express how many days of the past thirty days their health was not good. The responses were 1-30 (Number of days), 88 (None), 77 (Don't know/Not sure), 99 (Refused), and BLANK (Not asked or Missing). MENTHLTH is a variable used for participants to express how many days of the past thirty days their mental health was not good. The responses accepted were the same as PHYSHLTH. POORHLTH is a variable used for participants to express how many days of the past thirty days their health limited them from doing activities such as self-care, work, or recreation. The responses acceptable were the same as PHYSHLTH. EDUCA is a variable for participants to share the highest grade of school completed. The acceptable responses were 1 (Never attended school or only kindergarten), 2 (Grade 1 - 8), 3 (Grades 9 -11), 4 (Grade 12 or GED), 5 (College 1- 3 years), 6 (College 4 years or more), 9 (Refused), BLANK ( Not asked or Missing). INCOME3 is a variable used for participants to share their income level. The responses to choose from are 1 (\< \$10M), 2 (\<\$15M), 3 (\<\$20M), 4 (\<\$25M), 5 (\<\$35M), 6 (\<\$50M), 7 (\<\$75M), 8 (\<\$100M), 9 (\<\$150M), 10 (\<\$200M), 11 (\>\$200M), 77 (Don't know/Not sure), 99 (Refused), BLANK (Not asked or Missing). SEXVAR is a variable for participants to share their sex. The responses to choose from are 1 (Male) and 2 (Female).
+
+| Stratified by FLUTSHOT7 |               |               |               |               |         |
+|------------|------------|------------|------------|------------|------------|
+|                         | 1             | 2             | 7             | 9             | P       |
+| n                       | 2919          | 3982          | 52            | 13            |         |
+| GENHLTH(%)              |               |               |               |               | \<0.001 |
+| 1                       | 189 (6.5)     | 418 (10.5)    | 3 (5.8)       | 1 (7.7)       |         |
+| 2                       | 737 (25.2)    | 1024 (25.7)   | 13 (25.0)     | 2 (15.4)      |         |
+| 3                       | 1003 (34.4)   | 1284 (32.2)   | 12 (23.1)     | 1 (7.7)       |         |
+| 4                       | 715 (24.5)    | 863 (21.7)    | 10 (19.2)     | 8 (61.5)      |         |
+| 5                       | 267 (9.1)     | 379 (9.5)     | 12 (23.1)     | 1 (7.7)       |         |
+| 7                       | 6 (0.2)       | 14 (0.4)      | 2 (3.8)       | 0 (0.0)       |         |
+| 9                       | 2 (0.1)       | 0 (0.0)       | 0 (0.0)       | 0 (0.0)       |         |
+| PHYSHLTH (mean (SD))    | 32.22 (34.35) | 38.18 (36.50) | 39.12 (33.90) | 42.77 (35.30) | \<0.001 |
+| MENTHLTH (mean(SD))     | 44.31 (38.85) | 37.88 (36.36) | 45.92 (35.17) | 66.85 (36.21) | \<0.001 |
+| POORHLTH (mean(SD))     | 52.54 (38.22) | 51.81 (38.18) | 47.63 (36.28) | 61.92 (35.81) | 0.535   |
+| EDUCA (%)               |               |               |               |               | \<0.001 |
+| 1                       | 10 (0.3)      | 1 (0.0)       | 0 (0.0)       | 0 (0.0)       |         |
+| 2                       | 36 (1.2)      | 94 (2.4)      | 2 (3.8)       | 0 (0.0)       |         |
+| 3                       | 118 (4.0)     | 254 (6.4)     | 5 (9.6)       | 2 (15.4)      |         |
+| 4                       | 653 (22.4)    | 1248 (31.3)   | 21 (40.4)     | 4 (30.8)      |         |
+| 5                       | 831 (28.5)    | 1167 (29.3)   | 13 (25.0)     | 2 (15.4)      |         |
+| 6                       | 1254 (43.0)   | 1203 (30.2)   | 10 (19.2)     | 2 (15.4)      |         |
+| 9                       | 17 (0.6)      | 15 (0.4)      | 1 (1.9)       | 3 (23.1)      |         |
+| INCOME3 (mean(SD))      | 22.40 (33.02) | 19.82 (30.56) | 45.31 (38.07) | 73.54 (40.83) | \<0.001 |
+| FLUSHOT7 (%)            |               |               |               |               | \<0.001 |
+| 1                       | 2919 (100.0)  | 0 (0.0)       | 0 (0.0)       | 0 (0.0)       |         |
+| 2                       | 0 (0.0)       | 3982 (100.0)  | 0 (0.0)       | 0 (0.0)       |         |
+| 7                       | 0 (0.0)       | 0 (0.0)       | 52 (100.0)    | 0 (0.0)       |         |
+| 9                       | 0 (0.0)       | 0 (0.0)       | 0 (0.0)       | 13 (100.0)    |         |
+| SEXVAR = 2(%)           | 1753 (60.1)   | 2311 (58.0)   | 31 (59.6)     | 7 (53.8)      | 0.394   |
+
+This Table One gives us insight on our population. We can observe based on the flu shot data a wide array of variables and how they are broken down per category based on response. The BRFSS data contains many variables, some we will use in our research.
+
+## Research Question
+
+The research being conducted revolves around if height and weight are good predictors of age first time being told you have diabetes. I wanted to see if we go further with this question by analyzing quantiles within this sample population. Do the predictions change with the age range of the sample population? The variables I am using to address this questions are DIABAGE4, WEIGHT2, and HEIGHT3.
+
+DIABAGE4 is a variable that allows participants to share how old they were when told they first had diabetes. The acceptable responses are 1-97 (Age in years), 98 (Don't know/Not sure), 99 (Refused), and BLANK (Not asked or Missing). WEIGHT2 is a variable for participants to share how much they weigh without shoes on. The responses were acceptable 50-0776 (Weight in pounds), 7777 (Don't know/Not sure), 9023 - 9352 (Weight in kilograms), 9999 (Refused), and BLANK (Not asked or Missing). HEIGHT3 is a variable that allowed participants to share their height without shoes on. The acceptable responses could of been recorded metric or imperial.
+
+# *INSERT COMPLETED TABLE SHELL HERE*
 
 ## Statistical Programming and Analysis
 
-Data analysis was completed using R 4.4.1.
+Data analysis was completed using R 4.4.1. To begin, I had to pull in the XPT file about the entire BRFSS data set. I had to rename a column concerning states as it was not allowing for selection in the next step.
 
-## References
+```{r}
+library(haven)
+library(tidyverse)
 
-\# References. Pretty sure this has to be in markdown for this to work like this.
+brfssdata <- read_xpt("LLCP2023.XPT")
+brfssdata <- brfssdata %>%
+rename(state= '_STATE')
+```
+
+Next, I created smaller data frame in order not to disturb the primary source of data once I got it in R. I did this identifying the variables I wanted, then excluded obvious outliers after examining the data. I choose to look at participants that had diabetes as well. I did not want conflicting information with the age given of being diabetic and a conflicting confirmed diabetic status.
+
+```{r}
+data2 <- brfssdata %>%
+  filter(state == 12) %>%
+  filter(DIABETE4 == 1) %>%
+  filter(WEIGHT2<2500) %>%
+  filter(HEIGHT3<2500) %>%
+  select(DIABAGE4, WEIGHT2, HEIGHT3) %>%
+  na.omit()
+```
+
+I created a new table one and created histograms of the given data as well as summary statistics.
+
+```{r}
+library(tableone)
+table2 <- CreateTableOne(data = data2)
+print(table1)
+
+hist(data2$DIABAGE4)
+hist(data2$WEIGHT2)
+hist(data2$HEIGHT3)
+
+summary(data2$DIABAGE4)
+summary(data2$WEIGHT2)
+summary(data2$HEIGHT3)
+```
+
+Next I created three models using the rq() function from the quantreg library. I created a regression line for the quantiles 0.25, 0.50, and 0.75 sections of the sample population. It is clear to see that the more the weigh and shorter you are.... uh oh.
+
+```{r}
+library(quantreg)
+library(ggplot2)
+
+mm25 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data, tau = 0.25)
+mm50 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data, tau = 0.50)
+mm75 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data, tau = 0.75)
+
+round(coefficients(mm25),5)
+round(coefficients(mm50),5)
+round(coefficients(mm75),5)
+
+graphdata2 <- data2 %>%
+  mutate(mm25reg = 46.12525 + WEIGHT2*-0.02405 + HEIGHT3*0.00501,
+         mm50reg = 63.50396 + WEIGHT2*-0.04386 + HEIGHT3*-0.00296,
+         mm75reg = 74.10256 + WEIGHT2*0.06340 + HEIGHT3*0.00466)
+graphdata2 %>%
+  ggplot(aes(x=WEIGHT2,y=DIABAGE4))+
+  geom_point()+
+  geom_line(aes(y=mm25reg, color="blue"))+
+  annotate("text", x=600, y=95, label="mm25reg is blue",size=3)+
+  geom_line(aes(y=mm50reg, color="orange"))+
+  annotate("text", x=600, y=90, label="mm50reg is orange",size=3)+
+  geom_line(aes(y=mm75reg, color="pink"))+
+  annotate("text", x=600, y=85, label="mm75reg is pink",size=3)+
+  labs(y="Age",x="Weight")+
+  theme_bw()
+```
+
+Below is the summary of each model i created for each quantile explored.
+
+```{r}
+summary(mm25)
+summary(mm50)
+summary(mm75)
+```
