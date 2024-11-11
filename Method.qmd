@@ -33,7 +33,7 @@ The data used is behavioral risk factor surveillance system data (BRFSS). BRFSS 
 The below data was collected and organized by questions answered about FLUSHOT7. In this table, FLUSHOT7 is a variable for the past twelve months, has the participant had a flu vaccine. The results for this variable are 1 (Yes), 2 (No), 7 (Don't know), and 9 (Refused). GENHLTH is a variable for participants that rate their own health. The options are 1 (Excellent), 2 (Very good), 3 (Good), 4 (Fair), 5 (Poor), 7 (Don't know/Not sure), 9 (Refused), and BLANK (Not asked or Missing). PHYSHLTH is a variable used for participants to express how many days of the past thirty days their health was not good. The responses were 1-30 (Number of days), 88 (None), 77 (Don't know/Not sure), 99 (Refused), and BLANK (Not asked or Missing). MENTHLTH is a variable used for participants to express how many days of the past thirty days their mental health was not good. The responses accepted were the same as PHYSHLTH. POORHLTH is a variable used for participants to express how many days of the past thirty days their health limited them from doing activities such as self-care, work, or recreation. The responses acceptable were the same as PHYSHLTH. EDUCA is a variable for participants to share the highest grade of school completed. The acceptable responses were 1 (Never attended school or only kindergarten), 2 (Grade 1 - 8), 3 (Grades 9 -11), 4 (Grade 12 or GED), 5 (College 1- 3 years), 6 (College 4 years or more), 9 (Refused), BLANK ( Not asked or Missing). INCOME3 is a variable used for participants to share their income level. The responses to choose from are 1 (\< \$10M), 2 (\<\$15M), 3 (\<\$20M), 4 (\<\$25M), 5 (\<\$35M), 6 (\<\$50M), 7 (\<\$75M), 8 (\<\$100M), 9 (\<\$150M), 10 (\<\$200M), 11 (\>\$200M), 77 (Don't know/Not sure), 99 (Refused), BLANK (Not asked or Missing). SEXVAR is a variable for participants to share their sex. The responses to choose from are 1 (Male) and 2 (Female).
 
 | Stratified by FLUTSHOT7 |               |               |               |               |         |
-|------------|------------|------------|------------|------------|------------|
+|-------------------------|---------------|---------------|---------------|---------------|---------|
 |                         | 1             | 2             | 7             | 9             | P       |
 | n                       | 2919          | 3982          | 52            | 13            |         |
 | GENHLTH(%)              |               |               |               |               | \<0.001 |
@@ -145,7 +145,7 @@ graphdata2 %>%
   theme_bw()
 ```
 
-Below is the summary of each model i created for each quantile explored.
+Below is the summary of each model i created for each quantile explored as well as a filled in table shell of the confidence intervals. \| \| \| MM25 n= \| MM50 n= \| MM75 n= \| \|--------\|-------------\|---------\|---------\|---------\| \| Height \| \| \| \| \| \| \| Coefficient \| \| \| \| \| \| U CI \| \| \| \| \| \| L CI \| \| \| \| \| \| P Value \| \| \| \| \| Weight \| \| \| \| \| \| \| Coefficient \| \| \| \| \| \| U CI \| \| \| \| \| \| L CI \| \| \| \| \| \| P Value \| \| \| \|
 
 ```{r}
 summary(mm25)
