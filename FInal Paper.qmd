@@ -50,11 +50,7 @@ Figure 2
 
 I would like to further explain my analysis and the steps I took to get to my models. I started out downloading an XPT file from the CDC BRFSS website. I had to rename one of the variables "\_STATE" to "state". I had to do this from the onset because R was having difficulty recognizing the underscore as a variable name when I was trying to filter later on. So, I had to make this change very early on to ensure I filtered correctly for Florida. I also filtered to see data where DIABETE4=1. This narrowed down the responses of participants who identified they had diabetes. I also put caps on the variables WEIGHT2 and HEIGHT3 as I was seeing obvious responses that could be disregarded. Below was a snippet of relevant R code I used to perform these tasks.
 
-```{r data filtering}
-library(haven)
-library(tidyverse)
-library(quantreg)
-
+```{r Data Filtering}
 brfssdata <- read_xpt("LLCP2023.XPT")
 brfssdata <- brfssdata %>%
 rename(state= '_STATE')
@@ -71,7 +67,7 @@ data2 <- brfssdata %>%
 
 After I had my data set, I did run various descriptive statistics and visuals that I already showed earlier in this paper. I really wanted to show below the creation of my models. My names for each model stems from many model creations and also represents what quantile they are apart of. I created 3 quantiles to observe. mm25 is the 0.25 quantile, mm50 is the 0.50 quantile, and mm75 is the 0.75 quantile of my data set. That is what the tau represents in the model creation below. I used rq() from the quantreg package. I set DIABAGE4 as my response variable. Then, I used WEIGHT2 and HEIGHT3 as my predictor variables. I did explore models where I looked into the interaction between WEIGHT2 and HEIGHT3, however these models were not valid. From here, I called forward each models coefficients and then used those to create equations for each model for my graph. I named this data graph data. I added onto the existing data set I had. Finally, I created a visual. In this visual I wanted to ensure I could tell each line apart, so I made sure to color code and name them in a custom legend. I set my x axis to be WEIGHT2 and my y axis to be DIABAGE4.
 
-```{r model creation}
+```{r Model Creation}
 mm25 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data2, tau = 0.25)
 mm50 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data2, tau = 0.50)
 mm75 <- rq(data2$DIABAGE4~data2$WEIGHT2 + data2$HEIGHT3, data=data2, tau = 0.75)
@@ -97,6 +93,55 @@ graphdata2 %>%
   theme_bw() +
   theme(legend.position = "none")
 ```
+
+The graph (Figure 3) below shows that in quantiles 0.50 and 0.75, we can see an obvious trend that shows the more you weigh, the younger you are likely to be informed you have diabetes. The blue line I thought not to be trusted as the responses of at the top of the chart were not real recorded responses, they were simply just alternate options and it skewed that quantile. It was however interesting to see that this line is trending positively.
+
+Figure 3
+
+![](https://hmh56.github.io/IDS6940Hewlett/graph.png)
+
+Then from here I ran the R code below to be able to interpret my final results. I created a table with my results to be able to easily interpret. However, I wanted to show how I got my results. I used the summary() function against each of the models I made. Then I realized that confint() does not get along with models made in rq(). After research online, I would of had to alter my models using a different function. I did not want to do that, so I researched how to calculate them manually in R.
+
+```{r Results}
+#summary for each model below to tell significance
+summary(mm25)
+summary(mm50)
+summary(mm75)
+
+#mm25 Confidence Intervals
+mm25coef_estimates <- coef(mm25)
+mm25se_estimates <- summary(mm25)$coefficients[,2]
+mm25lower <- mm25coef_estimates - 1.96*mm25se_estimates
+mm25upper <- mm25coef_estimates + 1.96*mm25se_estimates
+mm25ci <- data.frame(Lower = round(mm25lower,3), Upper = round(mm25upper,3))
+
+#mm50 Confidence Intervals
+mm50coef_estimates <- coef(mm50)
+mm50se_estimates <- summary(mm50)$coefficients[,2]
+mm50lower <- mm50coef_estimates - 1.96*mm50se_estimates
+mm50upper <- mm50coef_estimates + 1.96*mm50se_estimates
+mm50ci <- data.frame(Lower = round(mm50lower,3), Upper = round(mm50upper,3))
+
+#mm75 Confidence Intervals
+mm75coef_estimates <- coef(mm75)
+mm75se_estimates <- summary(mm75)$coefficients[,2]
+mm75lower <- mm75coef_estimates - 1.96*mm75se_estimates
+mm75upper <- mm75coef_estimates + 1.96*mm75se_estimates
+mm75ci <- data.frame(Lower = round(mm75lower,3), Upper = round(mm75upper,3))
+```
+
+|        |                               | MM25     | MM50     | MM75    |
+|--------|-------------------------------|----------|----------|---------|
+| Height |                               |          |          |         |
+|        | Coefficient                   | 0.00501  | -0.00296 | 0.00466 |
+|        | Upper 95% Confidence Interval | 0.028    | 0.018    | 0.03    |
+|        | Lower 95% Confidence Interval | -0.018   | -0.024   | -0.021  |
+|        | P-Value                       | 0.66932  | 0.78491  | 0.71881 |
+| Weight |                               |          |          |         |
+|        | Coefficient                   | -0.02405 | -0.04386 | -0.0634 |
+|        | Upper 95% Confidence Interval | -0.016   | -0.03    | -0.048  |
+|        | Lower 95% Confidence Interval | -0.032   | -0.057   | -0.079  |
+|        | P-Value                       | 0        | 0        | 0       |
 
 ## Conclusion
 
